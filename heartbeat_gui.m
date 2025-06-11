@@ -1,3 +1,4 @@
+%This code snippet was authored using the GitHub Copilot AI programming assistant.
 function heartbeat_gui
     % Create the GUI figure
     f = figure('Name','Synthetic Heartbeat Generator','Position',[300 300 400 320]);
