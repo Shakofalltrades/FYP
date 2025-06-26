@@ -1,1 +1,114 @@
+#include <Arduino.h>
+#include <ESP32Servo.h>
+
+Servo servo1;
+Servo servo2;
+
+const int servoPin1 = 18;
+const int servoPin2 = 15;
+
+void rapidTwitches();
+void slowSway();
+void hiccupPulses();
+void combinedBodyShift();
+
+void setup()
+{
+  servo1.attach(servoPin1);
+  servo2.attach(servoPin2);
+  servo1.write(90);
+  servo2.write(90);
+  delay(500);
+}
+
+void loop()
+{
+  rapidTwitches();
+  delay(1000);
+
+  slowSway();
+  delay(1000);
+
+  hiccupPulses();
+  delay(1000);
+
+  combinedBodyShift();
+  delay(1000);
+}
+
+//
+// --- Motion Patterns ---
+//
+
+// 1. Rapid Twitches — jittery micro-movements
+void rapidTwitches()
+{
+  for (int i = 0; i < 10; i++)
+  {
+    int offset = random(-10, 11); // ±10° around centre
+    servo1.write(90 + offset);
+    servo2.write(90 - offset); // opposite jitter
+    delay(100);
+  }
+  // Reset
+  servo1.write(90);
+  servo2.write(90);
+}
+
+// 2. Slow Sway — like floating or gentle drift
+void slowSway()
+{
+  for (int angle = 60; angle <= 120; angle++)
+  {
+    servo1.write(angle);
+    servo2.write(180 - angle); // opposing sway
+    delay(20);
+  }
+  for (int angle = 120; angle >= 60; angle--)
+  {
+    servo1.write(angle);
+    servo2.write(180 - angle);
+    delay(20);
+  }
+}
+
+// 3. Hiccups — sharp, random pulses
+void hiccupPulses()
+{
+  for (int i = 0; i < 5; i++)
+  {
+    int pulse = random(80, 100); // brief offset
+    servo1.write(pulse);
+    servo2.write(180 - pulse);
+    delay(100);
+    servo1.write(90);
+    servo2.write(90);
+    delay(random(600, 1500)); // irregular gap
+  }
+}
+
+// 4. Combined Oscillation — mix of sway and twitch
+void combinedBodyShift()
+{
+  for (int i = 0; i < 3; i++)
+  {
+    // Sway phase
+    for (int angle = 80; angle <= 100; angle++)
+    {
+      servo1.write(angle);
+      servo2.write(180 - angle);
+      delay(30);
+    }
+
+    // Quick twitch while swaying
+    servo1.write(90 + random(-15, 15));
+    servo2.write(90 + random(-15, 15));
+    delay(100);
+
+    // Return to neutral
+    servo1.write(90);
+    servo2.write(90);
+    delay(300);
+  }
+}
 
