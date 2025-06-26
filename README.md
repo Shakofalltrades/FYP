@@ -1,14 +1,24 @@
 # Measuring Fetal Heartbeat using MEMS microphone - USER guide
 
-# Placing the Non invasive wearable device on the phantom
-Ensure that the microphones are placed over the sillicone incisons on the phantom
+# 🩺 Placing the Non-Invasive Wearable Device on the Phantom
 
-All the ESP32s must be powered via USB C
+Ensure that all **microphones are properly positioned over the silicone incisions** on the phantom model. These placement points correspond to the areas where fetal heartbeat signals are expected to be detected.
 
-# Simulating the audio signals 
-Connect to both the audio exciter speakers via bluetooth
+> 🎯 Accurate placement is crucial for capturing meaningful acoustic data.
 
-Play the corresponding heartbeat signals
+All **ESP32 boards must be powered via USB-C** connections to ensure reliable operation during recording.
+
+---
+
+# 🔊 Simulating the Audio Signals
+
+1. **Connect to both audio exciter speakers via Bluetooth** using your preferred playback device.
+2. Once connected, **play the corresponding fetal heartbeat signals** through each speaker.
+
+> 💡 Use signals that replicate normal, bradycardic, or tachycardic fetal heart rates depending on your test scenario.
+
+Ensure the playback volume and positioning mimic realistic in-womb conditions to validate microphone performance effectively.
+
 
 # 👶 Fetal Heartbeat Recording and Signal Processing with ESP32
 
